@@ -24,6 +24,7 @@ local config = {
   init_options = {
     bundles = {}
   },
+  on_attach = on_attach,
 }
 
 require('jdtls').start_or_attach(config)
