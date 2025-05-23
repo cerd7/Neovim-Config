@@ -1,4 +1,3 @@
-
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
@@ -26,8 +25,12 @@ map("n", "<leader>se", "<C-w>=", opts)      -- Equaliza splits
 map("n", "<leader>sx", ":close<CR>", opts)  -- Fecha split
 
 -- Move linhas
-map("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
-map("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
+map("n", "<A-j>", ":m .+1<CR>==", opts)
+map("n", "<A-k>", ":m .-2<CR>==", opts)
+
+-- Copiar
+map("n", "C-c", '"+yy"', opts)
+map("v", "C-c", '"+y"', opts)
 
 -- Buscar arquivos
 map("n", "<leader>ff", ":Telescope find_files<CR>", opts)
