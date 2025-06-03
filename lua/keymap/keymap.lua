@@ -44,3 +44,5 @@ map("n", "<leader>tt", ":ToggleTerm<CR>", opts)
 -- Retornar para home
 map("n",  "<leader>hh", ":Alpha<CR>", opts)
 
+-- Menu lateral
+map("n", "<leader>e", ":Neotree<CR>", opts)

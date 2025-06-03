@@ -32,8 +32,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Better Syntax Support
     Plug 'sheerun/vim-polyglot'
 
-    " File Explorer
-    Plug 'scrooloose/NERDTree'
+    " File Explorer   
+    Plug 'nvim-neo-tree/neo-tree.nvim', { 'branch': 'v3.x' }
 
     " Terminal 
     Plug 'akinsho/toggleterm.nvim'
@@ -51,7 +51,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     "Git plugin
     Plug 'tpope/vim-fugitive'
-    Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'tpope/vim-rhubarb'
     Plug 'junegunn/gv.vim'
 
@@ -77,8 +76,12 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'hrsh7th/vim-vsnip-integ'
 
     "Customs
-    Plug 'nvim-tree/nvim-web-devicons'
     Plug 'goolord/alpha-nvim'
     Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+    
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'MunifTanjim/nui.nvim'
+    Plug 'nvim-tree/nvim-web-devicons'
+
 
 call plug#end()
