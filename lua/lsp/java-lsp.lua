@@ -1,9 +1,13 @@
 local home = os.getenv("HOME")
 local workspace_folder = home .. "/.local/share/eclipse/" .. vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 
+local on_attach = function(client, bufnr)
+  -- Coloca aqui os atalhos que quiser ativar com o LSP
+end
+
 local config = {
   cmd = {
-    'java', -- ou caminho completo para o binário java
+    'java',
     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
     '-Dosgi.bundles.defaultStartLevel=4',
     '-Declipse.product=org.eclipse.jdt.ls.core.product',
@@ -24,6 +28,7 @@ local config = {
   init_options = {
     bundles = {}
   },
+  filetypes = { "java" },
   on_attach = on_attach,
 }
 

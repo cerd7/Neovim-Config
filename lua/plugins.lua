@@ -4,3 +4,4 @@ require('keymap/keymap')
 require('lsp/lsp-keymap')
 require('lsp/diagnostic');
 require('tree/nvim-tree');
+require 'nvim-treesitter.configs'.setup{highlight={enable=true}}

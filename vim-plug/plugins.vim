@@ -77,11 +77,13 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     "Customs
     Plug 'goolord/alpha-nvim'
-    Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+    Plug 'folke/tokyonight.nvim', { 'as': 'storm'}
     
     Plug 'nvim-lua/plenary.nvim'
     Plug 'MunifTanjim/nui.nvim'
     Plug 'nvim-tree/nvim-web-devicons'
+
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 
 call plug#end()

@@ -39,6 +39,6 @@ require("toggleterm").setup{
   shade_terminals = true,
 }
 
-vim.cmd("colorscheme catppuccin-macchiato")
+vim.cmd("colorscheme tokyonight")
 EOF
 

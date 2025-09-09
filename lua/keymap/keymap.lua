@@ -46,3 +46,6 @@ map("n",  "<leader>hh", ":Alpha<CR>", opts)
 
 -- Menu lateral
 map("n", "<leader>e", ":Neotree<CR>", opts)
+
+-- Quebra de linha
+map("n", "<A-z>", ":set wrap!<CR>", opts)
