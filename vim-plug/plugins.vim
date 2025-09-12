@@ -83,7 +83,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'MunifTanjim/nui.nvim'
     Plug 'nvim-tree/nvim-web-devicons'
 
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    " Plugin de notificação
+    Plug 'rcarriga/nvim-notify'
 
+    " Treesitter (já estava, mas confirme que está instalado)
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 call plug#end()

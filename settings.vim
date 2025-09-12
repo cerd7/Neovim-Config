@@ -1,37 +1,43 @@
-syntax enable                           " Enables syntax highlighing
-set hidden                              " Required to keep multiple buffers open multiple buffers
-set nowrap                              " Display long lines as just one line
-set encoding=utf-8                      " The encoding displayed
-set pumheight=10                        " Makes popup menu smaller
-set fileencoding=utf-8                  " The encoding written to file
-set ruler              			            " Show the cursor position all the time
-set cmdheight=1                         " More space for displaying messages
-set iskeyword+=-                      	" treat dash separated words as a word text object"
-set mouse=a                             " Enable your mouse
-set splitbelow                          " Horizontal splits will automatically be below
-set splitright                          " Vertical splits will automatically be to the right
-set t_Co=256                            " Support 256 colors
-set conceallevel=0                      " So that I can see `` in markdown files
-set tabstop=4                           " Insert 2 spaces for a tab
-set shiftwidth=2                        " Change the number of space characters inserted for indentation
-set smarttab                            " Makes tabbing smarter will realize you have 2 vs 4
-set expandtab                           " Converts tabs to spaces
-set smartindent                         " Makes indenting smart
-set autoindent                          " Good auto indent
-set laststatus=0                        " Always display the status line
-set number                              " Line numbers
-set relativenumber
-set cursorline                          " Enable highlighting of the current line
-set background=dark                     " tell vim what the background color looks like
-set showtabline=2                       " Always show tabs
-set noshowmode                          
-set clipboard+=unnamed
+" =============================================================================
+" Interface
+" =============================================================================
+set number                              " Mostra os números das linhas
+set relativenumber                      " Mostra os números das linhas relativas à posição do cursor
+set ruler                               " Mostra a posição do cursor
+set cmdheight=1                         " Altura da linha de comando
+set showtabline=2                       " Sempre mostra a barra de abas
+set laststatus=2                        " Sempre mostra a barra de status
+set cursorline                          " Destaca a linha atual
+set pumheight=10                        " Altura máxima do menu de autocompletar
+set background=dark                     " Define o fundo como escuro para melhor contraste do tema
+set termguicolors                       " Habilita cores de 24-bit (True Color)
 
-color desert
-set cursorline
-hi CursorLine cterm=NONE ctermbg=8 ctermfg=NONE
+" =============================================================================
+" Comportamento do Texto e Edição
+" =============================================================================
+syntax enable                           " Habilita o realce de sintaxe
+set hidden                              " Permite trocar de buffer sem salvar
+set nowrap                              " Desabilita a quebra de linha automática
+set encoding=utf-8                      " Define a codificação de caracteres para a interface
+set fileencoding=utf-8                  " Define a codificação de caracteres para os arquivos
+set iskeyword+=-                        " Trata palavras com hífen como uma única palavra
+set mouse=a                             " Habilita o uso do mouse em todos os modos
+set splitbelow                          " Abre novos splits horizontais abaixo do atual
+set splitright                          " Abre novos splits verticais à direita do atual
+set conceallevel=0                      " Evita que caracteres sejam ocultados (ex: em Markdown)
+set clipboard+=unnamed                  " Usa a área de transferência do sistema
 
-let g:markdown_fenced_languages = [
-      \ 'vim',
-      \ 'help'
-      \]
+" =============================================================================
+" Indentação
+" =============================================================================
+set tabstop=2                           " Define a largura de uma tabulação como 2 espaços
+set shiftwidth=2                        " Define o número de espaços para indentação automática
+set expandtab                           " Converte tabulações em espaços
+set smartindent                         " Habilita a indentação inteligente para novos blocos
+set autoindent                          " Mantém a indentação da linha anterior
+
+" =============================================================================
+" Configurações Específicas de Linguagem
+" =============================================================================
+let g:markdown_fenced_languages = ['vim', 'help']
+

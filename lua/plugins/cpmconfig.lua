@@ -1,17 +1,17 @@
 vim.o.completeopt = "menuone,noselect"
 
-require'compe'.setup {
-  enabled = true;
-  autocomplete = true; -- pode ser 'enable' se necessário
-  debug = false;
-  min_length = 1;
-  preselect = 'disable'; -- recomendado para evitar seleção automática
-  throttle_time = 80;
-  source_timeout = 200;
-  incomplete_delay = 400;
-  max_abbr_width = 100;
-  max_kind_width = 100;
-  max_menu_width = 100;
+require('compe').setup {
+  enabled = true,
+  autocomplete = true,
+  debug = false,
+  min_length = 1,
+  preselect = 'disable', -- recomendado para evitar seleção automática
+  throttle_time = 80,
+  source_timeout = 200,
+  incomplete_delay = 400,
+  max_abbr_width = 100,
+  max_kind_width = 100,
+  max_menu_width = 100,
   documentation = {
     border = { "╔", "═", "╗", "║", "╝", "═", "╚", "║" }, -- borda padrão
     winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
@@ -19,18 +19,18 @@ require'compe'.setup {
     min_width = 60,
     max_height = math.floor(vim.o.lines * 0.3),
     min_height = 1,
-  };
+  },
   
   source = {
-    path = true;
-    buffer = true;
-    calc = true;
-    vsnip = true;
-    nvim_lsp = true;
-    nvim_lua = true;
-    spell = true;
-    tags = true;
-  };
+    path = true,
+    buffer = true,
+    calc = true,
+    vsnip = true,
+    nvim_lsp = true,
+    nvim_lua = true,
+    spell = true,
+    tags = true,
+  },
 }
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
@@ -41,13 +41,27 @@ local check_back_space = function()
     return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
 end
 
--- Use (s-)tab to:
---- move to prev/next item in completion menuone
---- jump to prev/next snippet's placeholder
+-- Check if treesitter is disabled for vsnip
+local treesitter_disabled = vim.g.vsnip_disable_treesitter == 1
+
+-- Enhanced safe wrapper functions for vsnip
+local function safe_vsnip_call(func_name, ...)
+  if vim.g.vsnip_disable_treesitter == 1 then
+    return 0
+  end
+  
+  local success, result = pcall(vim.fn[func_name], ...)
+  if not success then
+    vim.notify("vsnip function " .. func_name .. " failed: " .. tostring(result), vim.log.levels.DEBUG)
+    return 0
+  end
+  return result or 0
+end
+
 _G.tab_complete = function()
   if vim.fn.pumvisible() == 1 then
     return t "<C-n>"
-  elseif vim.fn['vsnip#available'](1) == 1 then
+  elseif safe_vsnip_call('vsnip#available', 1) == 1 then
     return t "<Plug>(vsnip-expand-or-jump)"
   elseif check_back_space() then
     return t "<Tab>"
@@ -58,7 +72,7 @@ end
 _G.s_tab_complete = function()
   if vim.fn.pumvisible() == 1 then
     return t "<C-p>"
-  elseif vim.fn['vsnip#jumpable'](-1) == 1 then
+  elseif safe_vsnip_call('vsnip#jumpable', -1) == 1 then
     return t "<Plug>(vsnip-jump-prev)"
   else
     -- If <S-Tab> is not working in your terminal, change it to <C-h>
